@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue - 生命周期 - 胤</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="undefined, Vue, 生命周期"> 
+  
+  <meta name="description" content="Vue 生命周期详解
+
+
+
+从Vue实例的创建、运行、..."> 
+  
+  <meta name="author" content="9ml"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/favicon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/favicon.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_h1619vhl1nr.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '',
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpg',
+        wechat: '/images/theme/wechat.png'
+      },
+      motto: {
+        api: '',
+        default: '我会在那腥臭腐朽的日子里熠熠生辉'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">Vue - 生命周期</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> Index</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline">  About</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/js " class="underline"> JavaScript</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/vue " class="underline"> Vue</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/app " class="underline"> App</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/applet " class="underline"> Applet</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/9ml/">9ml</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/vue.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Vue - 生命周期</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>十月 20, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4653</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <blockquote>
+<p>从<code>Vue</code>实例的创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件，统称为生命周期。</p>
+<p>生命周期钩子：</p>
+<ul>
+<li>生命周期事件的别名</li>
+<li>生命周期钩子 <code>=</code> 生命周期函数 <code>=</code> 生命周期事件</li>
+</ul>
+</blockquote>
+<h2 id="图例"><a href="#图例" class="headerlink" title="图例"></a>图例</h2><p><img   class="lazyload" data-original="/images/theme/lifecycle.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
+<h2 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h2><blockquote>
+<p>以上图为例详细解析每个生命周期所做的事。</p>
+</blockquote>
+<h3 id="1-new-Vue"><a href="#1-new-Vue" class="headerlink" title="1. new Vue"></a>1. new Vue</h3><blockquote>
+<p>开始创建一个<code>Vue</code>的实例对象。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;&#125;);<br></code></pre></td></tr></table></figure>
+
+<h4 id="Events-amp-Lifecycle"><a href="#Events-amp-Lifecycle" class="headerlink" title="Events &amp; Lifecycle"></a>Events &amp; Lifecycle</h4><blockquote>
+<p>刚初始化了一个<code>Vue</code>空的实例对象，这时候这个对象身上，只有默认的一些生命周期函数和默认事件，其他的东西都未创建。</p>
+</blockquote>
+<h3 id="2-beforeCreate"><a href="#2-beforeCreate" class="headerlink" title="2. beforeCreate"></a>2. beforeCreate</h3><blockquote>
+<p>在<code>beforeCreate</code>生命周期函数执行的时候，<code>data</code>和<code>methods</code>中的数据都没有初始化。</p>
+</blockquote>
+<h4 id="injections-amp-reactivity"><a href="#injections-amp-reactivity" class="headerlink" title="injections &amp; reactivity"></a>injections &amp; reactivity</h4><blockquote>
+<p>初始化<code>data</code>和<code>methods</code>。</p>
+</blockquote>
+<h3 id="3-created"><a href="#3-created" class="headerlink" title="3. created"></a>3. created</h3><blockquote>
+<p>在<code>created</code>中，<code>data</code>和<code>methods</code>都已经被初始化好了。</p>
+<p>如果要调用<code>methods</code>中的方法或者操作<code>data</code>中的数据，最早只能在<code>created</code>中操作。</p>
+</blockquote>
+<h4 id="orHas-amp-orCompile"><a href="#orHas-amp-orCompile" class="headerlink" title="orHas &amp; orCompile"></a>orHas &amp; orCompile</h4><blockquote>
+<p><code>Vue</code>开始编译模板。</p>
+<p>执行<code>Vue</code>代码中的指令，在内存中生成一个编译好的模板字符串，然后把模板字符串渲染为内存中的<code>DOM</code>。</p>
+<p>此时只是在内存中渲染好了模板，没有把模板挂载到页面中。</p>
+</blockquote>
+<h3 id="4-boforeMount"><a href="#4-boforeMount" class="headerlink" title="4. boforeMount"></a>4. boforeMount</h3><blockquote>
+<p>模板已经在内存中编译完毕，但是尚未挂载到页面中，此时页面还是旧的。</p>
+</blockquote>
+<h4 id="Create-and-replace"><a href="#Create-and-replace" class="headerlink" title="Create and replace"></a>Create and replace</h4><blockquote>
+<p>将内存中编译好的模板，真实的替换到浏览器的页面中去。</p>
+</blockquote>
+<h3 id="5-mounted"><a href="#5-mounted" class="headerlink" title="5. mounted"></a>5. mounted</h3><blockquote>
+<p>内存中的模板已经真实的挂载到了页面中，页面中已经可以看到渲染好的页面。</p>
+<p><code>mounted</code>是实例创建期间的最后一个生命周期函数，当执行完<code>mounted</code>就表示实例已经完全被创建好了。</p>
+<p>如果要通过某些插件操作页面上的<code>DOM</code>节点，最早要在<code>mounted</code>中操作。</p>
+<p>此时，组件已经脱离了创建阶段，进入运行阶段。</p>
+</blockquote>
+<h3 id="6-beforeUpdate"><a href="#6-beforeUpdate" class="headerlink" title="6. beforeUpdate"></a>6. beforeUpdate</h3><blockquote>
+<p>页面运行中的事件。</p>
+<p>当执行<code>beforeUpdate</code>时，页面中显示的数据还是旧的，但是<code>data</code>中的数据是最新的。</p>
+<p>页面尚未和最新的数据同步。</p>
+</blockquote>
+<h4 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h4><blockquote>
+<p>先根据<code>data</code>中最新的数据在内存中重新渲染一份最新的内存<code>DOM</code>树。</p>
+<p>当最新的内存<code>DOM</code>树被更新之后，会把最新的内存<code>DOM</code>树重新渲染到真实的页面中去，这时候就完成了数据从<code>data(Model层)</code>到<code>view(视图层)</code>的更新。</p>
+</blockquote>
+<h3 id="7-updated"><a href="#7-updated" class="headerlink" title="7. updated"></a>7. updated</h3><blockquote>
+<p><code>updated</code>事件执行时，页面和<code>data</code>中的数据已经保存一致，都是最新的。</p>
+</blockquote>
+<h3 id="8-beforeDestroy"><a href="#8-beforeDestroy" class="headerlink" title="8. beforeDestroy"></a>8. beforeDestroy</h3><blockquote>
+<p>执行<code>beforeDestory</code>时，<code>Vue</code>实例已经从运行阶段进入到了销毁阶段。</p>
+<p>实例身上所有的<code>data</code>和所有的<code>methods</code>以及过滤器，指令等，都处于可用状态。</p>
+<p>此时，还没有真正执行销毁的过程。</p>
+</blockquote>
+<h3 id="9-destroyed"><a href="#9-destroyed" class="headerlink" title="9. destroyed"></a>9. destroyed</h3><blockquote>
+<p>当执行到<code>destroyed</code>时，组件已经被完全销毁。</p>
+<p>组件中所有的数据、方法、指令、过滤器等都不可用。</p>
+</blockquote>
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span> &#123;&#123;msg&#125;&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;msg = &#x27;芸芸&#x27;&quot;</span>&gt;</span>修改msg<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>      	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">        <span class="hljs-comment">// 开始创建一个 Vue 的实例对象，得到 ViewModel</span></span><br><span class="javascript">        <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">          el: <span class="hljs-string">&#x27;#app&#x27;</span>,</span><br>          data: &#123;<br><span class="javascript">            msg: <span class="hljs-string">&#x27;Hello World&#x27;</span></span><br>          &#125;,<br>          methods: &#123;<br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">showMsg</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">              <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行了show方法&#x27;</span>);</span><br>            &#125;<br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 第一个生命周期函数，表示实例被完全创建出来之前会执行它</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">beforeCreate</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.msg);  <span class="hljs-comment">// undefined</span></span><br><span class="javascript">            <span class="hljs-built_in">this</span>.showMsg(); <span class="hljs-comment">// 报错</span></span><br><span class="javascript">            <span class="hljs-comment">// 注意：在 beforeCreate 生命周期函数执行的时候，data 和 methods 中的数据都没有初始化</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 第二个生命周期</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">created</span>(<span class="hljs-params"></span>)</span>&#123;  <span class="hljs-comment">// !!!</span></span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.msg);  <span class="hljs-comment">// Hello World</span></span><br><span class="javascript">            <span class="hljs-built_in">this</span>.showMsg(); <span class="hljs-comment">// 执行了show方法</span></span><br><span class="javascript">            <span class="hljs-comment">// 在 created 中，data 和 methods 都已经被初始化好了</span></span><br><span class="javascript">            <span class="hljs-comment">// 如果要调用 methods 中的方法或者操作 data 中的数据，最早只能在 created 中操作</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 第三个正面周期，模板已经在内存中编译完成，但是尚未把模板渲染到页面中</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">beforeMount</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;p&#x27;</span>).innerText);  <span class="hljs-comment">// &#123;&#123; msg &#125;&#125;</span></span><br><span class="javascript">            <span class="hljs-comment">// 在 beforeMount 执行的时候，页面中的元素还没有被真正替换过来，只是之前写的模板字符串</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 第四个生命周期，内存中的模板已经真实的挂载到了页面中，页面中已经可以看到渲染好的页面</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span>&#123;  <span class="hljs-comment">// !!!</span></span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;p&#x27;</span>).innerText);  <span class="hljs-comment">// Hello World</span></span><br><span class="javascript">            <span class="hljs-comment">// mounted 是实例创建期间的最后一个生命周期函数，当执行完 mounted 就表示，实例已经完全被创建好了</span></span><br><span class="javascript">            <span class="hljs-comment">// 如果要通过某些插件操作页面上的 DOM 节点，最早要在 mounted 中操作</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 运行中的两个事件</span></span><br><span class="javascript">          <span class="hljs-comment">// 第五个生命周期，此时数据已经更新，但是界面还没有被更新</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">beforeUpdate</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;界面上的内容是：&#x27;</span> + <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;p&#x27;</span>).innerText); <span class="hljs-comment">// 界面上的内容是：Hello World</span></span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;data 中的 msg 数据是：&#x27;</span> + <span class="hljs-built_in">this</span>.msg); <span class="hljs-comment">// data 中的 msg 数据是：芸芸</span></span><br><span class="javascript">            <span class="hljs-comment">// 当执行 beforeUpdate 时，页面中显示的数据还是旧的，但是 data 中的数据是最新的</span></span><br><span class="javascript">            <span class="hljs-comment">// 页面尚未和最新的数据同步</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 第六个生命周期</span></span><br><span class="javascript">          <span class="hljs-function"><span class="hljs-title">updated</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;界面上的内容是：&#x27;</span> + <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;p&#x27;</span>).innerText); <span class="hljs-comment">// 界面上的内容是：芸芸</span></span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;data 中的 msg 数据是：&#x27;</span> + <span class="hljs-built_in">this</span>.msg); <span class="hljs-comment">// data 中的 msg 数据是：芸芸</span></span><br><span class="javascript">            <span class="hljs-comment">// updated 事件执行时，页面和 data 中的数据已经保存一致，都是最新的</span></span><br>          &#125;,<br><span class="javascript">          <span class="hljs-comment">// 销毁阶段指关闭页面，此处无法展示</span></span><br>        &#125;);<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="创建阶段"><a href="#创建阶段" class="headerlink" title="创建阶段"></a>创建阶段</h3><h4 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h4><blockquote>
+<p>实例刚在内存中被创建出来，此时，还没有初始化好<code>data</code>和<code>methods</code>属性。</p>
+</blockquote>
+<h4 id="created"><a href="#created" class="headerlink" title="created"></a>created</h4><blockquote>
+<p>实例已经在内存中创建完毕，此时<code>data</code>和<code>methods</code>已经创建完成，此时还没有开始编译模板。</p>
+</blockquote>
+<h3 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h3><h4 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h4><blockquote>
+<p>此时已经完成了模板的编译，但是还没有挂载到页面中。</p>
+</blockquote>
+<h4 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h4><blockquote>
+<p>此时已经将编译好的模板挂载到了页面指定的容器中显示。</p>
+</blockquote>
+<h3 id="运行阶段"><a href="#运行阶段" class="headerlink" title="运行阶段"></a>运行阶段</h3><h4 id="boforeUpdate"><a href="#boforeUpdate" class="headerlink" title="boforeUpdate"></a>boforeUpdate</h4><blockquote>
+<p>状态更新之前执行此类函数，此时<code>data</code>中的状态值是最新的，但是界面上显示的数据还是旧的，因为此时还没有开始重新渲染<code>DOM</code>节点。</p>
+</blockquote>
+<h4 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h4><blockquote>
+<p>实例更新完毕之后调用此函数，此时<code>data</code>中的状态值和页面上显示的数据都已经完成了更新，界面已经被重新渲染好了。</p>
+</blockquote>
+<h3 id="销毁阶段"><a href="#销毁阶段" class="headerlink" title="销毁阶段"></a>销毁阶段</h3><h4 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h4><blockquote>
+<p>实例销毁之前调用，在这一步，实例仍然完全可用。</p>
+</blockquote>
+<h4 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h4><blockquote>
+<p><code>Vue</code>实例销毁后调用，调用后<code>Vue</code>实例指示的所有东西都会解除绑定，所有的事件监听器都会被移除，所有的子实例也会被销毁。</p>
+</blockquote>
+<hr>
+<p>以上就是 <code>Vue</code>生命周期的所有内容了，有所收获不妨请作者喝杯茶~</p>
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>9ml</li>
+  <li><strong>本文链接：</strong><a href="https://9ml.github.io/2020/10/20/vue-lifecycle/index.html">https://9ml.github.io/2020/10/20/vue-lifecycle/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="tag">生命周期</a></li></ul>
+
+        
+      </section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=85211376 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/9ml " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:85211376@qq.com " target="_blank" onMouseOver="this.style.color='#FF0000'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/9ml/">9ml</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

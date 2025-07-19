@@ -1,5 +1,6 @@
 ---
 title: 'TypeScript 教程'
+description: '教你如何使用 TypeScript'
 ---
 
 # 前言

@@ -1,2 +1,3 @@
-# 9ml.github.io
-Record life
+# 个人网站
+
+> 仅作为个人的学习文档库

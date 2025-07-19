@@ -1,0 +1,11 @@
+---
+title: 'TypeScript 教程'
+---
+
+# 前言
+
+> 拥抱`TypeScript`
+
+## 提前声明
+
+本文档是在`B站`学习`TypeScript`时做的笔记, 👉🏻 [课程链接](https://www.bilibili.com/video/BV1YS411w7Bf/)

@@ -142,70 +142,89 @@ export default defineConfig({
               items: [
                 {
                   text: "类型声明及推断",
-                  link: "/docs/frontend/ts/core/03.variable-interface.md",
+                  link: "/docs/frontend/ts/core/03-1.variable&interface.md",
                 },
                 {
                   text: "类型总览",
-                  link: "/docs/frontend/ts/core/04.overview.md",
+                  link: "/docs/frontend/ts/core/03-2.overview.md",
                 },
                 {
                   text: "常用类型",
-                  link: "/docs/frontend/ts/core/05.common.md",
+                  link: "/docs/frontend/ts/core/03-3.common.md",
                 },
-                { text: "泛型", link: "/docs/frontend/ts/core/06.generic.md" },
+                { text: "泛型", link: "/docs/frontend/ts/core/03-4.generic.md" },
                 {
                   text: "类型声明文件",
-                  link: "/docs/frontend/ts/core/07.type_file.md",
+                  link: "/docs/frontend/ts/core/03-5.type_file.md",
                 },
               ],
             },
             {
               text: "命名空间",
-              link: "/docs/frontend/ts/core/08.namespace.md",
+              link: "/docs/frontend/ts/core/04.namespace.md",
             },
             {
               text: "设计模式",
-              link: "/docs/frontend/ts/core/09.design_pattern.md",
+              collapsed: false,
+              items: [
+                {
+                  text: "设计模式简介",
+                  link: "/docs/frontend/ts/core/05-1.design_pattern.md",
+                },
+                {
+                  text: "单例模式",
+                  link: "/docs/frontend/ts/core/05-2.dp_singleton.md",
+                },
+                {
+                  text: "代理模式",
+                  link: "/docs/frontend/ts/core/05-3.dp_proxy.md",
+                },
+                { text: "观察者模式", link: "/docs/frontend/ts/core/05-4.dp_observer.md" },
+                {
+                  text: "工厂模式",
+                  link: "/docs/frontend/ts/core/05-5.dp_factory.md",
+                },
+              ],
             },
             {
               text: "链表",
-              link: "/docs/frontend/ts/core/10.link_list.md",
+              link: "/docs/frontend/ts/core/06.link_list.md",
             },
             {
               text: "装饰器",
               collapsed: false,
               items: [
                 {
-                  text: "简介",
-                  link: "/docs/frontend/ts/core/11.dec_introduction.md",
+                  text: "装饰器简介",
+                  link: "/docs/frontend/ts/core/07-1.decorator.md",
                 },
                 {
                   text: "类装饰器",
-                  link: "/docs/frontend/ts/core/12.dec_class.md",
+                  link: "/docs/frontend/ts/core/07-2.dec_class.md",
                 },
                 {
                   text: "装饰器工厂",
-                  link: "/docs/frontend/ts/core/13.dec_factory.md",
+                  link: "/docs/frontend/ts/core/07-3.dec_factory.md",
                 },
                 {
                   text: "装饰器组合",
-                  link: "/docs/frontend/ts/core/14.dec_combination.md",
+                  link: "/docs/frontend/ts/core/07-4.dec_combination.md",
                 },
                 {
                   text: "属性装饰器",
-                  link: "/docs/frontend/ts/core/15.dec_attribute.md",
+                  link: "/docs/frontend/ts/core/07-5.dec_attribute.md",
                 },
                 {
                   text: "方法装饰器",
-                  link: "/docs/frontend/ts/core/16.dec_method.md",
+                  link: "/docs/frontend/ts/core/07-6.dec_method.md",
                 },
                 {
                   text: "访问器装饰器",
-                  link: "/docs/frontend/ts/core/17.doc_accessor.md",
+                  link: "/docs/frontend/ts/core/07-7.doc_accessor.md",
                 },
                 {
                   text: "参数装饰器",
-                  link: "/docs/frontend/ts/core/18.doc_param.md",
+                  link: "/docs/frontend/ts/core/07-8.doc_param.md",
                 },
               ],
             },

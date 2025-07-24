@@ -12,11 +12,11 @@ hero:
 
   actions:
     - theme: "brand"
-      text: "学习记录"
-      link: "/markdown-examples"
+      text: "开始革命"
+      link: "/docs/road/"
     - theme: "alt"
       text: "碎碎念"
-      link: "/api-examples"
+      link: "/docs/tattle/"
 
 features:
   - title: "✨ 分享"

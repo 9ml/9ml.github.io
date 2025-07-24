@@ -32,9 +32,14 @@ export default defineConfig({
         text: "前端",
         items: [
           {
-            text: "HTML + CSS",
+            text: "HTML",
             link: "/docs/frontend/html/index.md",
             activeMatch: "/docs/frontend/html/",
+          },
+          {
+            text: "CSS",
+            link: "/docs/frontend/css/index.md",
+            activeMatch: "/docs/frontend/css/",
           },
           {
             text: "JavaScript",
@@ -109,6 +114,26 @@ export default defineConfig({
         ],
       },
       {
+        text: "工具",
+        items: [
+          {
+            text: "Git",
+            link: "/docs/tools/git/index.md",
+            activeMatch: "/docs/tools/git/",
+          },
+          {
+            text: "Typora",
+            link: "/docs/tools/typora/index.md",
+            activeMatch: "/docs/tools/typora/",
+          },
+          {
+            text: "VS Code",
+            link: "/docs/tools/vscode/index.md",
+            activeMatch: "/docs/tools/vscode/",
+          }
+        ],
+      },
+      {
         text: "分享",
         link: "/docs/share",
       },
@@ -119,6 +144,30 @@ export default defineConfig({
     ],
 
     sidebar: {
+      "/docs/road": [
+        {
+          text: "革命之路",
+          collapsed: false,
+          items: [
+            {
+              text: "写在前面",
+              link: "/docs/road/index.md",
+            },
+            {
+              text: "前端路线",
+              link: "/docs/road/core/frontend.md",
+            },
+            {
+              text: "后端路线",
+              link: "/docs/road/core/backend.md",
+            },
+            {
+              text: "游戏路线",
+              link: "/docs/road/core/game.md",
+            }
+          ]
+        }
+      ],
       "/docs/frontend/ts/": [
         {
           text: "TypeScript 教程",

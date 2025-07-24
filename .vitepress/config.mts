@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "坐忘道",
-  description: "意境两忘, 物我一体",
+  description: "坐忘道, 㘴忘道 意境两忘, 物我一体, 个人网站, 博客, Blog",
   themeConfig: {
     logo: "/logo.png",
     lastUpdated: {

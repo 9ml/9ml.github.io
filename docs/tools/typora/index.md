@@ -1,6 +1,7 @@
 ---
 title: 'Typora 教程'
 description: 'Typora, Typora使用教程'
+sidebar: false
 aside: 'left'
 ---
 

@@ -280,6 +280,26 @@ export default defineConfig({
           ],
         },
       ],
+      "/docs/tools/vscode/": [
+        {
+          text: "VS Code",
+          collapsed: false,
+          items: [
+            {
+              text: "简介",
+              link: "/docs/tools/vscode/index.md",
+            },
+            {
+              text: "使用教程",
+              link: "/docs/tools/vscode/core/1.usage.md",
+            },
+            {
+              text: "插件推荐",
+              link: "/docs/tools/vscode/core/2.plugins.md",
+            }
+          ]
+        }
+      ],
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/9ml" }],

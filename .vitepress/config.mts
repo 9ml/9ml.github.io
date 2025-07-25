@@ -280,6 +280,30 @@ export default defineConfig({
           ],
         },
       ],
+      "/docs/tools/git/": [
+        {
+          text: "Git",
+          collapsed: false,
+          items: [
+            {
+              text: "简介",
+              link: "/docs/tools/git/index.md",
+            },
+            {
+              text: "安装及配置",
+              link: "/docs/tools/git/core/1.install.md",
+            },
+            {
+              text: "常用命令",
+              link: "/docs/tools/git/core/2.commands.md",
+            },
+            {
+              text: "实际应用",
+              link: "/docs/tools/git/core/3.usage.md",
+            }
+          ]
+        }
+      ],
       "/docs/tools/vscode/": [
         {
           text: "VS Code",

@@ -25,7 +25,7 @@ description: 'Visual Studio Code, VS Code 简介, VS Code 使用教程'
 
 ## 技术栈和核心组件
 
-> 了解`VS Code`的技术栈和核心组件, 可以对`VS Code`有更深入的认识, 作为了解即可
+> 了解`VS Code`的技术栈和核心组件, 可以对`VS Code`有更深入的认识, 以下内容作为了解即可
 
 - 开发框架: `Electron`; `Electron`可以使用`Node.js+JS`开发桌面GUI应用程序
 - 编辑器: `Monaco Editor`; `Monaco Editor`是一款开源的在线代码编辑器, 是`VS Code`浏览器版本的最核心组件

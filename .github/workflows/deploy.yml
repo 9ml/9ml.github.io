@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:  # 关键修复：增加写入权限
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,4 +17,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: src  # 直接部署根目录下的所有文件
+          publish_dir: ./  # 直接部署根目录下的所有文件

@@ -2,7 +2,7 @@ name: Deploy Static HTML to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # 触发分支（根据你的仓库默认分支调整）
+    branches: [ main ]  # 根据你的默认分支调整（main/master）
 
 jobs:
   deploy:
@@ -16,4 +16,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: pages  # 直接部署根目录下的所有文件
-          keep_files: true  # 保留 gh-pages 分支的现有文件（可选）

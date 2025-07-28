@@ -30,5 +30,5 @@
 
 ## 声明
 
-- 本网站基于[VitePress](https://vitepress.dev/)搭建, 推荐使用
+- 本网站基于 [VitePress](https://vitepress.dev/) 搭建, 推荐使用
 - 本网站仅作为个人知识分享, 部分内容来自搬运整理, 搬运内容会表明出处

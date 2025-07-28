@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:  # 关键修复：增加写入权限
+    permissions:  # 增加写入权限
       contents: write
     steps:
       - name: Checkout code
